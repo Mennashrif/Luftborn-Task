@@ -1,5 +1,4 @@
-﻿using AutoMapper;
-using MediatR;
+﻿using MediatR;
 using ReportSystem.Application.Features.Common.DTO;
 using ReportSystem.Domain.Entities.UserEntity;
 using ReportSystem.Domain.IRepository.IUnitOfWork;
@@ -8,14 +7,12 @@ namespace ReportSystem.Application.Features.Users.Commands.EditUser
 {
     public class EditUserHundler : IRequestHandler<EditUserCommand, ResponseDTO>
     {
-        private readonly IMapper _mapper;
         private readonly IUnitOfWork _unitOfWork;
         private readonly ResponseDTO _responseDTO;
 
-        public EditUserHundler(IUnitOfWork unitOfWork, IMapper mapper)
+        public EditUserHundler(IUnitOfWork unitOfWork)
         {
             _unitOfWork = unitOfWork;
-            _mapper = mapper;
             _responseDTO = new ResponseDTO();
         }
         public async Task<ResponseDTO> Handle(EditUserCommand request, CancellationToken cancellationToken)
